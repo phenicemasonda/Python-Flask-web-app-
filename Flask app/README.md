@@ -5,7 +5,7 @@ python -m venv
 env/Scripts/Activate
 
 <!-- Install Flask -->
-python installl Flask
+python install Flask
 
 <!-- Create app directory -->
 mkdir app
