@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Share File: {{ file_name }}</h2>
+    <form method="POST" action="{{ url_for('share', file_name=file_name) }}">
+        <div class="form-group">
+            <label for="user_to_share">User to Share With</label>
+            <input type="text" class="form-control" id="user_to_share" name="user_to_share" required>
+        </div>
+        <div class="form-group">
+            <label for="permission">Permission</label>
+            <select class="form-control" id="permission" name="permission">
+                <option value="read">Read</option>
+                <option value="write">Write</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Share</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Files</h2>
+    <a href="{{ url_for('upload') }}" class="btn btn-primary mb-3">Upload File</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for blob in blobs %}
+                <tr>
+                    <td>{{ blob.name }}</td>
+                    <td>
+                        <a href="{{ url_for('share', file_name=blob.name) }}" class="btn btn-info">Share</a>
+                        {% if role == 'owner' %}
+                            <a href="{{ url_for('change_label', file_name=blob.name) }}" class="btn btn-secondary">Change Label</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <style>
+        
+        <style>
+    /* Custom styles for the files page */
+    .card {
+        border: none;
+        border-radius: 10px;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+        border-color: #117a8b;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    .table-light th {
+        background-color: #f8f9fa;
+        border-color: #dee2e6;
+    }
+
+    .table-light td {
+        border-color: #dee2e6;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+    </style>
+{% endblock %}
